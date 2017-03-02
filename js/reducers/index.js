@@ -12,12 +12,14 @@ export default function repositoryReducer(state, action) {
 
     if (action.type === Actions.NEW_GAME) {
       return initialState;
+      console.log(initialState);
     } else if (action.type === Actions.GAME_OVER) {
       initialState.gameOver = true;
     } else if (action.type === Actions.GUESS_NUMBER) {
       numberOfGuesses++
+      console.log(numberOfGuesses);
       return guessedNumbers.push(guess);
+      console.log(guessedNumbers);
     }
-
     return state;
 };
