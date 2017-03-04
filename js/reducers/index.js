@@ -14,54 +14,58 @@ export default function repositoryReducer(state = initialState, action) {
 
     switch(action.type) {
         case Actions.NEW_GAME:
-            return state;
+            return initialState;
 
         case Actions.GAME_OVER:
-            initialState.gameOver == true;
+            initialState.gameOver = true;
+            break;
 
         case Actions.GUESS_NUMBER:
-            let currentState = state;
+            let newState = state;
 
-            currentState.numberOfGuesses++;
-            currentState.guessedNumbers.push(action.guess);
+            newState.numberOfGuesses++;
+            newState.guessedNumbers.push(action.guess);
 
             if (action.guess != state.correctAnswer) {
-                currentState.difference = Math.abs(action.guess - state.previousGuess);
-                currentState.previousGuess = action.guess;
+                newState.difference = Math.abs(action.guess - state.previousGuess);
+                newState.previousGuess = action.guess;
 
-                if (currentState.difference > 50) {
-                    currentState.feedback == "Cold";
-                    Object.assign({}, state, currentState);
+                if (newState.difference > 50) {
+                    newState.feedback = "Cold";
+                    Object.assign({}, state, newState);
                 }
 
-                else if (currentState.difference > 40) {
-                    currentState.feedback == "Cold";
-                    Object.assign({}, state, currentState);
+                else if (newState.difference > 40) {
+                    newState.feedback = "Cold";
+                    Object.assign({}, state, newState);
+                }
+                else if (newState.difference > 30) {
+                    newState.feedback = "Cold";
+                    Object.assign({}, state, newState);
                 }
 
-                else if (currentState.difference > 30) {
-                    currentState.feedback == "Cold";
-                    Object.assign({}, state, currentState);
+                else if (newState.difference > 20) {
+                    newState.feedback = "Hot";
+                    Object.assign({}, state, newState);
                 }
 
-                else if (currentState.difference > 20) {
-                    currentState.feedback == "Hot";
-                    Object.assign({}, state, currentState);
+                else if (newState.difference > 10) {
+                    newState.feedback = "Hotter";
+                    Object.assign({}, state, newState);
                 }
 
-                else if (currentState.difference > 10) {
-                    currentState.feedback == "Hotter";
-                    Object.assign({}, state, currentState);
-                }
-
-                else if (currentState.difference > 5) {
-                    currentState.feedback == "Very Hot";
-                    Object.assign({}, state, currentState);
+                else if (newState.difference > 5) {
+                    newState.feedback = "Very Hot";
+                    Object.assign({}, state, newState);
                 }
             } else {
-                currentState.feedback == "YOU WON!!!"
-                Object.assign({}, state, currentState);
+                newState.feedback = "YOU WON!!!"
+                newState.gameOver = true;
+                Object.assign({}, state, newState);
             }
+            return Object.assign({}, state, newState);
+
+        default:
         return state;
-    }
+    };
 };
