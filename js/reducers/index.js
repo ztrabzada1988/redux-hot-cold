@@ -10,7 +10,7 @@ const initialState = {
   difference: 0
 }
 
-export default function repositoryReducer(state = initialState, action) {
+export default function HotColdReducer(state = initialState, action) {
 
     switch(action.type) {
         case Actions.NEW_GAME:
