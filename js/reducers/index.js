@@ -14,14 +14,26 @@ export default function repositoryReducer(state = initialState, action) {
 
     let currentState = state;
 
+    switch(action.type) {
+        case Actions.NEW_GAME:
+            state = initialState;
+
+        case Actions.GAME_OVER:
+            initialState.gameOver = true;
+
+        case Actions.GUESS_NUMBER:
+        initialState.numberOfGuesses++;
+
+    }
+
     if (action.type === Actions.NEW_GAME) {
         currentState = state;
     } else if (action.type === Actions.GAME_OVER) {
       initialState.gameOver = true;
     } else if (action.type === Actions.GUESS_NUMBER) {
       numberOfGuesses++
-      initialState.previousGuess = Action.guess;
-      initialState.difference = Math.abs(action.guess - Action.guess)
+      initialState.previousGuess = action.guess;
+      initialState.difference = Math.abs(action.guess - initialState.previousGuess)
       if (action.guess )
       guessedNumbers.push(guess);
       return
