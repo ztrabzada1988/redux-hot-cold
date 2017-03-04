@@ -22,7 +22,15 @@ export default function repositoryReducer(state = initialState, action) {
             initialState.gameOver = true;
 
         case Actions.GUESS_NUMBER:
-        initialState.numberOfGuesses++;
+            initialState.numberOfGuesses++;
+            initialState.previousGuess = action.guess;
+            initialState.guessedNumbers.push(action.guess);
+            initialState.difference = Math.abs(action.guess - initialState.previousGuess);
+
+            if (initialState.difference > 50) {
+                initialState.feedback = "Cold";
+
+            }
 
     }
 
