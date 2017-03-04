@@ -12,8 +12,6 @@ const initialState = {
 
 export default function repositoryReducer(state = initialState, action) {
 
-    let currentState = state;
-
     switch(action.type) {
         case Actions.NEW_GAME:
             state = initialState;
@@ -27,34 +25,36 @@ export default function repositoryReducer(state = initialState, action) {
             initialState.guessedNumbers.push(action.guess);
             initialState.difference = Math.abs(action.guess - initialState.previousGuess);
 
-            if (initialState.difference > 50) {
-                initialState.feedback == "Cold";
-                Object.assign({}, state, currentState);
-            }
+            if (action.guess != state.generateRandomNumber) {
+                if (initialState.difference > 50) {
+                    initialState.feedback == "Cold";
+                    Object.assign({}, state, currentState);
+                }
 
-            if (initialState.difference > 40) {
-                initialState.feedback == "Cold";
-                Object.assign({}, state, currentState);
-            }
+                else if (initialState.difference > 40) {
+                    initialState.feedback == "Cold";
+                    Object.assign({}, state, currentState);
+                }
 
-            if (initialState.difference > 30) {
-                initialState.feedback == "Cold";
-                Object.assign({}, state, currentState);
-            }
+                else if (initialState.difference > 30) {
+                    initialState.feedback == "Cold";
+                    Object.assign({}, state, currentState);
+                }
 
-            if (initialState.difference > 20) {
-                initialState.feedback == "Hot";
-                Object.assign({}, state, currentState);
-            }
+                else if (initialState.difference > 20) {
+                    initialState.feedback == "Hot";
+                    Object.assign({}, state, currentState);
+                }
 
-            if (initialState.difference > 10) {
-                initialState.feedback == "Hotter";
-                Object.assign({}, state, currentState);
-            }
+                else if (initialState.difference > 10) {
+                    initialState.feedback == "Hotter";
+                    Object.assign({}, state, currentState);
+                }
 
-            if (initialState.difference > 5) {
-                initialState.feedback == "Very Hot";
-                Object.assign({}, state, currentState);
+                else if (initialState.difference > 5) {
+                    initialState.feedback == "Very Hot";
+                    Object.assign({}, state, currentState);
+                }
             }
     }
 
