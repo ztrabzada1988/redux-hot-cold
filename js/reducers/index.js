@@ -14,7 +14,7 @@ export default function repositoryReducer(state = initialState, action) {
 
     switch(action.type) {
         case Actions.NEW_GAME:
-            state = initialState;
+            return state;
 
         case Actions.GAME_OVER:
             initialState.gameOver == true;
@@ -58,20 +58,10 @@ export default function repositoryReducer(state = initialState, action) {
                     currentState.feedback == "Very Hot";
                     Object.assign({}, state, currentState);
                 }
+            } else {
+                currentState.feedback == "YOU WON!!!"
+                Object.assign({}, state, currentState);
             }
+        return state;
     }
-
-    if (action.type === Actions.NEW_GAME) {
-        currentState = state;
-    } else if (action.type === Actions.GAME_OVER) {
-      initialState.gameOver = true;
-    } else if (action.type === Actions.GUESS_NUMBER) {
-      numberOfGuesses++
-      initialState.previousGuess = action.guess;
-      initialState.difference = Math.abs(action.guess - initialState.previousGuess)
-      if (action.guess )
-      guessedNumbers.push(guess);
-      return
-    }
-    return state;
 };
