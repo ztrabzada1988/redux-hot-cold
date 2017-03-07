@@ -58,6 +58,11 @@ export default function HotColdReducer(state = initialState, action) {
                     newState.feedback = "Very Hot";
                     Object.assign({}, state, newState);
                 }
+
+                else if (newState.difference > 2) {
+                    newState.feedback = "you are almost there";
+                    Object.assign({}, state, newState);
+
             } else {
                 newState.feedback = "YOU WON!!!"
                 newState.gameOver = true;
