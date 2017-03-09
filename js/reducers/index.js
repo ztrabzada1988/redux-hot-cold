@@ -30,6 +30,7 @@ export default function HotColdReducer(state = initialState, action) {
                 newState.difference = Math.abs(action.guess - state.previousGuess);
                 newState.previousGuess = action.guess;
 
+                //logic:  if difference is greater then a #, give feedback hot or cold
                 if (newState.difference > 50) {
                     newState.feedback = "Cold";
                     Object.assign({}, state, newState);
