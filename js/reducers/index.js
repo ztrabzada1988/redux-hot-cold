@@ -13,12 +13,30 @@ const initialState = {
 export default function HotColdReducer(state = initialState, action) {
 
     switch(action.type) {
-        case Actions.NEW_GAME:
-            return initialState;
-
-        case Actions.GAME_OVER:
-            initialState.gameOver = true;
+//        case Actions.NEW_GAME:
+//            return initialState;
+//
+//        case Actions.GAME_OVER:
+//            initialState.gameOver = true;
+//            break;
+        case GAME_OVER:
+            console.log("Game Over");
             break;
+
+        case NEW_GAME:
+            newState = {
+                answer: Math.floor((Math.random() * 100) + 1),
+                guesses: [],
+                numberOfGuesses: 0,
+                feedback: "Make your Guess!",
+                gameOver: false
+            };
+            return Object.assign({}, state, newState);
+
+        default:
+            return state;
+    }
+
 
         case Actions.GUESS_NUMBER:
             let newState = state;
