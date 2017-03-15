@@ -1,9 +1,28 @@
 
+//import {createStore, applyMiddleware, compose} from 'redux';
+//import logger from 'redux-logger';
+//import reducer from './reducers';
+//
+//
+//const CreateStore = Redux.createStore;
+//
+//export const Store = CreateStore(Reducers.HotColdReducer);
+
 import {createStore, applyMiddleware, compose} from 'redux';
 import logger from 'redux-logger';
 import reducer from './reducers';
 
+const middlewares = [
+    logger()
+]
 
-const CreateStore = Redux.createStore;
+const enhancers = compose(
+    applyMiddleware(...middlewares),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+)
 
-export const Store = CreateStore(Reducers.HotColdReducer);
+const store = createStore(
+    reducer, undefined, enhancers
+)
+
+export default store;
