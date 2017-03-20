@@ -1,0 +1,83 @@
+.game {
+    text-align: center;
+}
+
+.gameInfoDiv {
+    display: block;
+}
+
+#info {
+    float: left;
+    margin-bottom: 20px;
+}
+
+#newGame {
+    float: right;
+}
+
+.feedback {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    background: #CC324B;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.prevGuesses, ul{
+    padding: 0;
+    width: 300px;
+    height: 60px;
+    margin: 0 auto;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: #11A8AB;
+    overflow: auto;
+}
+.prevGuesses li {
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    list-style: none;
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    background: #1A4E95;
+}
+
+.gameForm form input {
+    width: 100px;
+    margin-top: 10px;
+}
+
+form {
+    padding-top: 30px;
+}
+
+body {
+    text-align: center;
+    background: #1F253D;
+}
+
+a:visited, a:hover, a:active {
+    color: white;
+}
+
+h1, h3 {
+    color: white;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+h4 {
+    margin-top: 30px;
+}
+.container {
+    margin: 0 auto;
+    width: 300px;
+    height: 150px;
+    background: #394264;
+}
+
+.modalContent {
+    background-color: #E74C3C;
+}
